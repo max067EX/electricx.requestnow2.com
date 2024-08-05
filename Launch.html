@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule a Meeting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        form select, form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Schedule a Meeting</h1>
+        <p>Choose a time and day to talk to one of our employees.</p>
+    </header>
+    <main>
+        <form id="schedule-form">
+            <label for="employee">Select an Employee:</label>
+            <select id="employee" name="employee">
+                <!-- Employees will be added here -->
+            </select>
+
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Select Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="code">Enter Code Employees Only:</label>
+            <input type="text" id="code" name="code" placeholder="Enter the code here">
+
+            <button type="submit">Schedule</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Company Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // List of employees
+        const employees = ["Alice Johnson", "Bob Smith", "Carol Davis"];
+
+        // Populate the employee dropdown
+        const employeeSelect = document.getElementById('employee');
+        employees.forEach(employee => {
+            const option = document.createElement('option');
+            option.value = employee;
+            option.textContent = employee;
+            employeeSelect.appendChild(option);
+        });
+
+        // Handle form submission
+        document.getElementById('schedule-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const employee = document.getElementById('employee').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const code = document.getElementById('code').value;
+            alert(`Meeting scheduled with ${employee} on ${date} at ${time}.\nEntered Code: ${code}`);
+        });
+    </script>
+</body>
+</html>
